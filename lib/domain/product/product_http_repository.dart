@@ -1,6 +1,11 @@
 import 'dart:convert';
 
 import 'package:data_app/domain/product/product.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+
+final productHttpRepository = Provider<ProductHttpRepository>((ref) {
+  return ProductHttpRepository();
+});
 
 class ProductHttpRepository {
   //Fake data
@@ -25,7 +30,6 @@ class ProductHttpRepository {
   //name, price
   Product insert(Product product) {
     //http 통신 코드(product 전송)
-    product.id = 4;
 
     list = [...list, product];
 
