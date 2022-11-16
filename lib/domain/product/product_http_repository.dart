@@ -52,7 +52,7 @@ class ProductHttpRepository {
     return productDto;
   }
 
-  int deleteById(int id) {
+  int removeProduct(int id) {
     list = list.where((product) => product.id != id).toList();
     //http 통신 코드
 
