@@ -1,5 +1,7 @@
 import 'package:data_app/controller/product_controller.dart';
 import 'package:data_app/domain/product/product.dart';
+import 'package:data_app/store/global_state_store.dart';
+import 'package:data_app/views/components/my_alert_dialog.dart';
 import 'package:data_app/views/product/list/product_list_view_store.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,6 +15,9 @@ class ProductListView extends ConsumerWidget {
     final pc = ref.read(
         productController); // singletone으로 하기 위해서 provider에서 해당 Controller를 가지고 있게 한다.
     final pm = ref.watch(productListViewStore);
+    final globalListener = ref.listen(globalState, (previous, next) {
+      MyAlertDialog(context: context, msg: "실패").showDialog();
+    });
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(

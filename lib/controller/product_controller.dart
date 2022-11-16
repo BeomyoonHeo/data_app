@@ -2,6 +2,7 @@
 import 'package:data_app/domain/product/product.dart';
 import 'package:data_app/domain/product/product_http_repository.dart';
 import 'package:data_app/main.dart';
+import 'package:data_app/store/global_state_store.dart';
 import 'package:data_app/views/product/list/product_list_view_store.dart';
 import 'package:data_app/views/components/my_alert_dialog.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,7 +37,8 @@ class ProductController {
   void delete(int id, context) {
     int result = _ref.read(productHttpRepository).removeProduct(id);
     if (result != 1) {
-      MyAlertDialog(context: context, msg: "삭제 실패").showDialog();
+      _ref.read(globalState.notifier).state++;
+      //MyAlertDialog(context: context, msg: "삭제 실패").showDialog();
     } else {
       _ref.read(productListViewStore.notifier).removeProduct(id);
     }

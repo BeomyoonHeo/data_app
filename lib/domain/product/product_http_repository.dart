@@ -56,6 +56,6 @@ class ProductHttpRepository {
     list = list.where((product) => product.id != id).toList();
     //http 통신 코드
 
-    return 1;
+    return -1;
   }
 }
